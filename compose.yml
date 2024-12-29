@@ -30,57 +30,48 @@ services:
       - "-c"
       - "maintenance_work_mem=4GB"
 
-  # migrate:
-  #   container_name: newscentr-migrate
-  #   environment:
-  #     - PRISMA_URL=${PRISMA_URL}
-  #   build:
-  #     context: .
-  #     dockerfile: dockerfile
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
-  #   command: yarn prisma:deploy
+  migrate:
+    container_name: newscentr-migrate
+    environment:
+      - PRISMA_URL=${PRISMA_URL}
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: yarn prisma:deploy
 
-  # prisma:
-  #   container_name: newscentr-prisma-studio
-  #   environment:
-  #     - PRISMA_URL=${PRISMA_URL}
-  #   build:
-  #     context: .
-  #     dockerfile: dockerfile
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
-  #   command: yarn prisma:studio
-  #   ports:
-  #     - "${DOCKER_PRISMA_PORT}:5555"
+  prisma:
+    container_name: newscentr-prisma-studio
+    environment:
+      - PRISMA_URL=${PRISMA_URL}
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: yarn prisma:studio
+    ports:
+      - "${DOCKER_PRISMA_PORT}:5555"
 
-  # server:
-  #   container_name: newscentr-server
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   build:
-  #     context: .
-  #     dockerfile: dockerfile
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
-  #     migrate:
-  #       condition: service_completed_successfully
-  #   command: yarn server:start
-  #   ports:
-  #     - "${DOCKER_SERVER_PORT}:4444"
-
-  pgadmin:
-    container_name: newscentr-pgadmin
-    image: dpage/pgadmin4:latest
+  server:
+    container_name: newscentr-server
     restart: always
     env_file:
       - .env
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    command: yarn server:start
     ports:
-      - 0.0.0.0:6060:80
+      - "${DOCKER_SERVER_PORT}:4444"
 
 volumes:
   pg: null
