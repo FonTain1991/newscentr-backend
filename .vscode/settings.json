@@ -1,0 +1,22 @@
+{
+  "eslint.format.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "emmet.triggerExpansionOnTab": true,
+  "cSpell.words": [
+    "changefreq",
+    "childs",
+    "gouranna",
+    "lastmod",
+    "nestjs",
+    "QLJSON",
+    "Streamable",
+    "urlset",
+    "uuidv"
+  ]
+}

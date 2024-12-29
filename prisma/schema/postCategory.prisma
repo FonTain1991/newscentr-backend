@@ -1,0 +1,14 @@
+model PostCategory {
+  id                 String         @id @default(uuid())
+  name               String
+  url                String
+  parentId           String?
+  parent             PostCategory?  @relation("Parent", fields: [parentId], references: [id])
+  parentPostCategory PostCategory[] @relation("Parent")
+  Blog               Post[]         @relation("PostCategory")
+  keywords           String?
+  description        String?
+  text               String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime?      @updatedAt
+}

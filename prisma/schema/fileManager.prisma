@@ -1,0 +1,10 @@
+model FileManager {
+  id                String          @id @default(uuid())
+  type              FileManagerType
+  value             String?
+  parentId          String?
+  parent            FileManager[]   @relation("Parent")
+  parentFileManager FileManager[]   @relation("Parent")
+  name              String
+  order             Int             @default(0)
+}

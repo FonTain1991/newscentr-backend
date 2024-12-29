@@ -1,0 +1,18 @@
+model Post {
+  id             String       @id @default(uuid())
+  pageName       String
+  pageTitle      String
+  url            String       @unique
+  text           String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime?    @updatedAt
+  isPublish      Boolean      @default(false)
+  postCategoryId String
+  postCategory   PostCategory @relation("PostCategory", fields: [postCategoryId], references: [id])
+  keywords       String?
+  description    String?
+  previewId      String?
+  previewAlt     String?
+  previewTitle   String?
+  countSee       Int          @default(0)
+}

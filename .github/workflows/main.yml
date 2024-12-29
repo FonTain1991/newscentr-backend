@@ -1,0 +1,63 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - by
+      - main
+
+env:
+  PROJECT: gouranna-backend
+  BUILD_PATH: /app/gouranna/backend
+
+jobs:
+  BuildDeployBy:
+    env:
+      BRANCH: by
+      ENV_FILE: ${{ vars.ENV_BY }}
+
+    if: github.ref == 'refs/heads/by'
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          # port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
+          script: |
+            rm -rf ${{env.BUILD_PATH}}/${{env.BRANCH}} &&
+            mkdir -p ${{env.BUILD_PATH}} &&
+            cd ${{env.BUILD_PATH}} &&
+            git clone -b ${{env.BRANCH}} https://${{ secrets.GIT_TOKEN }}@github.com/FonTain1991/gouranna-backend ${{env.BRANCH}} &&
+            cd ${{env.BUILD_PATH}}/${{env.BRANCH}} &&
+            echo '${{env.ENV_FILE}}' >> .env &&
+            docker compose -p ${{env.PROJECT}}-${{env.BRANCH}} build && 
+            docker compose -p ${{env.PROJECT}}-${{env.BRANCH}} up -d
+
+  BuildDeployMain:
+    env:
+      BRANCH: main
+      ENV_FILE: ${{ vars.ENV_MAIN }}
+
+    if: github.ref == 'refs/heads/main'
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
+          script: |
+            rm -rf ${{env.BUILD_PATH}}/${{env.BRANCH}} &&
+            mkdir -p ${{env.BUILD_PATH}} &&
+            cd ${{env.BUILD_PATH}} &&
+            git clone -b ${{env.BRANCH}} https://${{ secrets.GIT_TOKEN }}@github.com/FonTain1991/gouranna-backend ${{env.BRANCH}} &&
+            cd ${{env.BUILD_PATH}}/${{env.BRANCH}} &&
+            echo '${{env.ENV_FILE}}' >> .env &&
+            docker compose -p ${{env.PROJECT}}-${{env.BRANCH}} build && 
+            docker compose -p ${{env.PROJECT}}-${{env.BRANCH}} up -d

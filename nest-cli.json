@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/server/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/server/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/server",
+  "projects": {
+    "server": {
+      "type": "application",
+      "root": "apps/server",
+      "entryFile": "main",
+      "sourceRoot": "apps/server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/server/tsconfig.app.json"
+      }
+    },
+    "graphql": {
+      "type": "library",
+      "root": "libs/graphql",
+      "entryFile": "index",
+      "sourceRoot": "libs/graphql/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/graphql/tsconfig.lib.json"
+      }
+    },
+    "prisma": {
+      "type": "library",
+      "root": "libs/prisma",
+      "entryFile": "index",
+      "sourceRoot": "libs/prisma/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/prisma/tsconfig.lib.json"
+      }
+    },
+    "auth": {
+      "type": "library",
+      "root": "libs/auth",
+      "entryFile": "index",
+      "sourceRoot": "libs/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/auth/tsconfig.lib.json"
+      }
+    },
+    "mailer": {
+      "type": "library",
+      "root": "libs/mailer",
+      "entryFile": "index",
+      "sourceRoot": "libs/mailer/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/mailer/tsconfig.lib.json"
+      }
+    },
+    "user": {
+      "type": "library",
+      "root": "libs/user",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/tsconfig.lib.json"
+      }
+    },
+    "post-category": {
+      "type": "library",
+      "root": "libs/post-category",
+      "entryFile": "index",
+      "sourceRoot": "libs/post-category/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/post-category/tsconfig.lib.json"
+      }
+    },
+    "blog": {
+      "type": "library",
+      "root": "libs/blog",
+      "entryFile": "index",
+      "sourceRoot": "libs/blog/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/blog/tsconfig.lib.json"
+      }
+    },
+    "images": {
+      "type": "library",
+      "root": "libs/images",
+      "entryFile": "index",
+      "sourceRoot": "libs/images/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/images/tsconfig.lib.json"
+      }
+    },
+    "file-manager": {
+      "type": "library",
+      "root": "libs/file-manager",
+      "entryFile": "index",
+      "sourceRoot": "libs/file-manager/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/file-manager/tsconfig.lib.json"
+      }
+    },
+    "recipe-category": {
+      "type": "library",
+      "root": "libs/recipe-category",
+      "entryFile": "index",
+      "sourceRoot": "libs/recipe-category/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/recipe-category/tsconfig.lib.json"
+      }
+    },
+    "recipe": {
+      "type": "library",
+      "root": "libs/recipe",
+      "entryFile": "index",
+      "sourceRoot": "libs/recipe/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/recipe/tsconfig.lib.json"
+      }
+    },
+    "ingredient": {
+      "type": "library",
+      "root": "libs/ingredient",
+      "entryFile": "index",
+      "sourceRoot": "libs/ingredient/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/ingredient/tsconfig.lib.json"
+      }
+    },
+    "recipe-ingredient": {
+      "type": "library",
+      "root": "libs/recipe-ingredient",
+      "entryFile": "index",
+      "sourceRoot": "libs/recipe-ingredient/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/recipe-ingredient/tsconfig.lib.json"
+      }
+    },
+    "breadcrumb": {
+      "type": "library",
+      "root": "libs/breadcrumb",
+      "entryFile": "index",
+      "sourceRoot": "libs/breadcrumb/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/breadcrumb/tsconfig.lib.json"
+      }
+    },
+    "sitemap-xml": {
+      "type": "library",
+      "root": "libs/sitemap-xml",
+      "entryFile": "index",
+      "sourceRoot": "libs/sitemap-xml/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/sitemap-xml/tsconfig.lib.json"
+      }
+    }
+  }
+}

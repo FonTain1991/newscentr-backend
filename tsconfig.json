@@ -1,0 +1,113 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/graphql": [
+        "libs/graphql/src"
+      ],
+      "@app/graphql/*": [
+        "libs/graphql/src/*"
+      ],
+      "@app/prisma": [
+        "libs/prisma/src"
+      ],
+      "@app/prisma/*": [
+        "libs/prisma/src/*"
+      ],
+      "@app/auth": [
+        "libs/auth/src"
+      ],
+      "@app/auth/*": [
+        "libs/auth/src/*"
+      ],
+      "@app/mailer": [
+        "libs/mailer/src"
+      ],
+      "@app/mailer/*": [
+        "libs/mailer/src/*"
+      ],
+      "@app/user": [
+        "libs/user/src"
+      ],
+      "@app/user/*": [
+        "libs/user/src/*"
+      ],
+      "@app/post-category": [
+        "libs/post-category/src"
+      ],
+      "@app/post-category/*": [
+        "libs/post-category/src/*"
+      ],
+      "@app/post": [
+        "libs/post/src"
+      ],
+      "@app/post/*": [
+        "libs/post/src/*"
+      ],
+      "@app/images": [
+        "libs/images/src"
+      ],
+      "@app/images/*": [
+        "libs/images/src/*"
+      ],
+      "@app/file-manager": [
+        "libs/file-manager/src"
+      ],
+      "@app/file-manager/*": [
+        "libs/file-manager/src/*"
+      ],
+      "@app/recipe-category": [
+        "libs/recipe-category/src"
+      ],
+      "@app/recipe-category/*": [
+        "libs/recipe-category/src/*"
+      ],
+      "@app/recipe": [
+        "libs/recipe/src"
+      ],
+      "@app/recipe/*": [
+        "libs/recipe/src/*"
+      ],
+      "@app/ingredient": [
+        "libs/ingredient/src"
+      ],
+      "@app/ingredient/*": [
+        "libs/ingredient/src/*"
+      ],
+      "@app/recipe-ingredient": [
+        "libs/recipe-ingredient/src"
+      ],
+      "@app/recipe-ingredient/*": [
+        "libs/recipe-ingredient/src/*"
+      ],
+      "@app/breadcrumb": [
+        "libs/breadcrumb/src"
+      ],
+      "@app/breadcrumb/*": [
+        "libs/breadcrumb/src/*"
+      ],
+      "@app/sitemap-xml": [
+        "libs/sitemap-xml/src"
+      ],
+      "@app/sitemap-xml/*": [
+        "libs/sitemap-xml/src/*"
+      ]
+    }
+  }
+}

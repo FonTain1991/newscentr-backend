@@ -1,0 +1,21 @@
+model Recipe {
+  id                String             @id @default(uuid())
+  pageName          String
+  pageTitle         String
+  url               String             @unique
+  text              String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime?          @updatedAt
+  isPublish         Boolean            @default(false)
+  recipeCategoryId  String
+  recipeCategory    RecipeCategory     @relation("RecipeCategory", fields: [recipeCategoryId], references: [id])
+  keywords          String?
+  description       String?
+  previewId         String?
+  previewAlt        String?
+  previewTitle      String?
+  RecipeIngredient  RecipeIngredient[]
+  totalCookingTime  DateTime?
+  activeCookingTime DateTime?
+  countSee          Int                @default(0)
+}

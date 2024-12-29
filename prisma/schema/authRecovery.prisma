@@ -1,0 +1,6 @@
+model AuthRecovery {
+  userId               String   @unique
+  recoveryToken        String   @default(uuid())
+  recoveryTokenExpires DateTime @default(now())
+  User                 User     @relation(fields: [userId], references: [id])
+}
