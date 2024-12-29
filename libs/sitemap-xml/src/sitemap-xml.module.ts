@@ -1,13 +1,11 @@
-import { RecipeModule } from '@app/recipe'
-import { RecipeCategoryModule } from '@app/recipe-category'
-import { forwardRef, Module } from '@nestjs/common'
-import { SitemapXmlService } from './sitemap-xml.service'
-import { SitemapXmlController } from './sitemap-xml.controller'
 import { PostModule } from '@app/post'
 import { PostCategoryModule } from '@app/post-category'
+import { forwardRef, Module } from '@nestjs/common'
+import { SitemapXmlController } from './sitemap-xml.controller'
+import { SitemapXmlService } from './sitemap-xml.service'
 
 @Module({
-  imports: [forwardRef(() => RecipeCategoryModule), forwardRef(() => RecipeModule), forwardRef(() => PostCategoryModule), forwardRef(() => PostModule)],
+  imports: [forwardRef(() => PostCategoryModule), forwardRef(() => PostModule)],
   controllers: [SitemapXmlController],
   providers: [SitemapXmlService],
   exports: [SitemapXmlService],

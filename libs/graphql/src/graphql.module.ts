@@ -2,7 +2,6 @@ import { AuthModule, AuthResolver, AuthService } from '@app/auth'
 import { BreadcrumbModule, BreadcrumbResolver } from '@app/breadcrumb'
 import { FileManagerModule, FileManagerResolver } from '@app/file-manager'
 import { ImagesController, ImagesModule } from '@app/images'
-import { IngredientModule, IngredientResolver } from '@app/ingredient'
 import { PostModule, PostResolver } from '@app/post'
 import { PostCategoryModule, PostCategoryResolver } from '@app/post-category'
 import { SitemapXmlModule } from '@app/sitemap-xml'
@@ -18,13 +17,9 @@ import { useFactory } from './graphql.utils'
     AuthModule,
     UserModule,
     PostCategoryModule,
-    // RecipeCategoryModule,
     PostModule,
     ImagesModule,
     FileManagerModule,
-    // RecipeModule,
-    IngredientModule,
-    // RecipeIngredientModule,
     BreadcrumbModule,
     SitemapXmlModule,
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
@@ -47,11 +42,8 @@ import { useFactory } from './graphql.utils'
     AuthResolver,
     UserResolver,
     PostCategoryResolver,
-    // RecipeCategoryResolver,
     PostResolver,
     FileManagerResolver,
-    // RecipeResolver,
-    IngredientResolver,
     BreadcrumbResolver
   ]
 })

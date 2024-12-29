@@ -1,13 +1,11 @@
+import { PostModule } from '@app/post'
+import { PostCategoryModule } from '@app/post-category'
+import { PrismaModule } from '@app/prisma'
 import { Module } from '@nestjs/common'
 import { BreadcrumbService } from './breadcrumb.service'
-import { PrismaModule } from '@app/prisma'
-import { RecipeCategoryModule } from '@app/recipe-category'
-import { PostCategoryModule } from '@app/post-category'
-import { RecipeModule } from '@app/recipe'
-import { PostModule } from '@app/post'
 
 @Module({
-  imports: [PrismaModule, RecipeCategoryModule, PostCategoryModule, RecipeModule, PostModule],
+  imports: [PrismaModule, PostCategoryModule, PostModule],
   providers: [BreadcrumbService],
   exports: [BreadcrumbService],
 })
