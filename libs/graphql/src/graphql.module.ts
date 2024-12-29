@@ -5,9 +5,6 @@ import { ImagesController, ImagesModule } from '@app/images'
 import { IngredientModule, IngredientResolver } from '@app/ingredient'
 import { PostModule, PostResolver } from '@app/post'
 import { PostCategoryModule, PostCategoryResolver } from '@app/post-category'
-import { RecipeModule, RecipeResolver } from '@app/recipe'
-import { RecipeCategoryModule, RecipeCategoryResolver } from '@app/recipe-category'
-import { RecipeIngredientModule } from '@app/recipe-ingredient'
 import { SitemapXmlModule } from '@app/sitemap-xml'
 import { UserModule, UserResolver } from '@app/user'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
@@ -21,13 +18,13 @@ import { useFactory } from './graphql.utils'
     AuthModule,
     UserModule,
     PostCategoryModule,
-    RecipeCategoryModule,
+    // RecipeCategoryModule,
     PostModule,
     ImagesModule,
     FileManagerModule,
-    RecipeModule,
+    // RecipeModule,
     IngredientModule,
-    RecipeIngredientModule,
+    // RecipeIngredientModule,
     BreadcrumbModule,
     SitemapXmlModule,
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
@@ -50,10 +47,10 @@ import { useFactory } from './graphql.utils'
     AuthResolver,
     UserResolver,
     PostCategoryResolver,
-    RecipeCategoryResolver,
+    // RecipeCategoryResolver,
     PostResolver,
     FileManagerResolver,
-    RecipeResolver,
+    // RecipeResolver,
     IngredientResolver,
     BreadcrumbResolver
   ]
