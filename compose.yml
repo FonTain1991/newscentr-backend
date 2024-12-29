@@ -80,7 +80,7 @@ services:
     env_file:
       - .env
     ports:
-      - 0.0.0.0:5050:80
+      - 0.0.0.0:6060:80
 
 volumes:
   pg: null
