@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: gouranna_${SUFFIX}-postgres
+    container_name: newscentr_${SUFFIX}-postgres
     image: postgres:16.3
     restart: always
     environment:
@@ -31,7 +31,7 @@ services:
       - "maintenance_work_mem=4GB"
 
   migrate:
-    container_name: gouranna_${SUFFIX}-migrate
+    container_name: newscentr_${SUFFIX}-migrate
     environment:
       - PRISMA_URL=${PRISMA_URL}
     build:
@@ -43,7 +43,7 @@ services:
     command: yarn prisma:deploy
 
   prisma:
-    container_name: gouranna_${SUFFIX}-prisma-studio
+    container_name: newscentr_${SUFFIX}-prisma-studio
     environment:
       - PRISMA_URL=${PRISMA_URL}
     build:
@@ -57,7 +57,7 @@ services:
       - "${DOCKER_PRISMA_PORT}:5555"
 
   server:
-    container_name: gouranna_${SUFFIX}-server
+    container_name: newscentr_${SUFFIX}-server
     restart: always
     env_file:
       - .env
