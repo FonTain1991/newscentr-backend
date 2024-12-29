@@ -72,30 +72,6 @@
       "@app/file-manager/*": [
         "libs/file-manager/src/*"
       ],
-      "@app/recipe-category": [
-        "libs/recipe-category/src"
-      ],
-      "@app/recipe-category/*": [
-        "libs/recipe-category/src/*"
-      ],
-      "@app/recipe": [
-        "libs/recipe/src"
-      ],
-      "@app/recipe/*": [
-        "libs/recipe/src/*"
-      ],
-      "@app/ingredient": [
-        "libs/ingredient/src"
-      ],
-      "@app/ingredient/*": [
-        "libs/ingredient/src/*"
-      ],
-      "@app/recipe-ingredient": [
-        "libs/recipe-ingredient/src"
-      ],
-      "@app/recipe-ingredient/*": [
-        "libs/recipe-ingredient/src/*"
-      ],
       "@app/breadcrumb": [
         "libs/breadcrumb/src"
       ],

@@ -100,42 +100,6 @@
         "tsConfigPath": "libs/file-manager/tsconfig.lib.json"
       }
     },
-    "recipe-category": {
-      "type": "library",
-      "root": "libs/recipe-category",
-      "entryFile": "index",
-      "sourceRoot": "libs/recipe-category/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/recipe-category/tsconfig.lib.json"
-      }
-    },
-    "recipe": {
-      "type": "library",
-      "root": "libs/recipe",
-      "entryFile": "index",
-      "sourceRoot": "libs/recipe/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/recipe/tsconfig.lib.json"
-      }
-    },
-    "ingredient": {
-      "type": "library",
-      "root": "libs/ingredient",
-      "entryFile": "index",
-      "sourceRoot": "libs/ingredient/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/ingredient/tsconfig.lib.json"
-      }
-    },
-    "recipe-ingredient": {
-      "type": "library",
-      "root": "libs/recipe-ingredient",
-      "entryFile": "index",
-      "sourceRoot": "libs/recipe-ingredient/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/recipe-ingredient/tsconfig.lib.json"
-      }
-    },
     "breadcrumb": {
       "type": "library",
       "root": "libs/breadcrumb",

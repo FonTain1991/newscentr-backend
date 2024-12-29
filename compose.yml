@@ -75,4 +75,3 @@ services:
 
 volumes:
   pg: null
-  pgadmin-data: null
