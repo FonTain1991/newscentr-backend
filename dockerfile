@@ -1,12 +1,10 @@
-FROM node:20-alpine AS base
+FROM node:20.1.0-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile
-RUN apt-get update -y
-RUN apt-get install -y openssl
 
 # Rebuild the source code only when needed
 FROM base AS build
