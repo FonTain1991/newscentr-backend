@@ -42,19 +42,19 @@ services:
         condition: service_healthy
     command: yarn prisma:deploy
 
-  prisma:
-    container_name: newscentr-prisma-studio
-    environment:
-      - PRISMA_URL=${PRISMA_URL}
-    build:
-      context: .
-      dockerfile: dockerfile
-    depends_on:
-      postgres:
-        condition: service_healthy
-    command: yarn prisma:studio
-    ports:
-      - "${DOCKER_PRISMA_PORT}:5555"
+  # prisma:
+  #   container_name: newscentr-prisma-studio
+  #   environment:
+  #     - PRISMA_URL=${PRISMA_URL}
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   command: yarn prisma:studio
+  #   ports:
+  #     - "${DOCKER_PRISMA_PORT}:5555"
 
   server:
     container_name: newscentr-server
