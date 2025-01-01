@@ -4,3 +4,4 @@ export const AUTH = {
   TOKEN_INVALID: 'Срок действия токена истек. Повторите еще раз',
   PASSWORD_BE_DIFFERENT: 'Новый пароль должен отличаться от предыдущих использованных паролей.'
 }
+export const SALT: number = 10

@@ -18,6 +18,16 @@ export class PostResolver {
     return await this.postService.getAll()
   }
 
+  @Query(() => [Post], { nullable: true })
+  async getPostsIsPublish() {
+    console.log('qew')
+    return await this.postService.getAll({
+      where: {
+        isPublish: true
+      }
+    })
+  }
+
   @Directive(GQLDirectives.isAuth)
   @Mutation(() => Post, { nullable: true })
   async createPost(@Args('post') post: PostCreate) {
@@ -36,12 +46,11 @@ export class PostResolver {
     return await this.postService.update(post)
   }
 
-  @Mutation(() => [Post], { nullable: true })
+  @Mutation(() => Post, { nullable: true })
   async updatePostCountSee(@Args('url') url: string) {
     return await this.postService.updateCountSee(url)
   }
-
-  @Query(() => Post)
+  @Query(() => Post, { nullable: true })
   async getCountPosts() {
     return await this.postService.countAll()
   }
@@ -70,6 +79,9 @@ export class PostResolver {
     @Args('take', { nullable: true }) take?: number,
   ) {
     return await this.postService.getAll({
+      where: {
+        isPublish: true
+      },
       take: take ?? 10,
       skip: cursor ? 1 : 0,
       cursor: cursor ? {

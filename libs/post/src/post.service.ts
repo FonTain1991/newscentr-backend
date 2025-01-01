@@ -3,16 +3,18 @@ import { Injectable } from '@nestjs/common'
 import { PostCreate, PostUpdate } from './post.model'
 import { PostCategoryService } from '@app/post-category'
 import { Post, Prisma } from '@prisma/client'
+import { SitemapXmlService } from '@app/sitemap-xml'
 
 @Injectable()
 export class PostService {
   constructor(
     private prismaService: PrismaService,
     private postCategoryService: PostCategoryService,
+    private sitemapXmlService: SitemapXmlService
   ) { }
 
   async create(params: PostCreate) {
-    return await this.prismaService.post.create({
+    const post = await this.prismaService.post.create({
       data: {
         pageName: params.pageName,
         pageTitle: params.pageTitle,
@@ -28,6 +30,8 @@ export class PostService {
         previewTitle: params?.previewTitle
       }
     })
+    await this.sitemapXmlService.generate()
+    return post
   }
 
   async getById(id: string) {
@@ -46,7 +50,7 @@ export class PostService {
   }
 
   async update(params: PostUpdate) {
-    return await this.prismaService.post.update({
+    const post = await this.prismaService.post.update({
       where: { id: params.id },
       data: {
         pageName: params.pageName,
@@ -62,12 +66,14 @@ export class PostService {
         previewTitle: params?.previewTitle
       }
     })
+    await this.sitemapXmlService.generate()
+    return post
   }
 
   async getByUrl({ url, postCategoryUrl }: { url: string, postCategoryUrl: string }): Promise<Post> {
     const category = await this.postCategoryService.getByUrl(postCategoryUrl)
     return await this.prismaService.post.findFirst({
-      where: { url, postCategoryId: category.id },
+      where: { url, postCategoryId: category.id, isPublish: true },
     })
   }
 
@@ -83,6 +89,9 @@ export class PostService {
 
   async getAllForXml() {
     return await this.prismaService.post.findMany({
+      where: {
+        isPublish: true,
+      },
       select: {
         url: true,
         createdAt: true,
@@ -99,6 +108,7 @@ export class PostService {
     const postCategories = await this.postCategoryService.getWithParents(url)
     return await this.prismaService.post.findMany({
       where: {
+        isPublish: true,
         postCategoryId: {
           in: postCategories.map(v => v.id)
         }

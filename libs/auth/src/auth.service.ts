@@ -1,10 +1,11 @@
 import { GQLContext } from '@app/graphql/graphql.types'
 import { MailerService } from '@app/mailer'
 import { PrismaService } from '@app/prisma'
-import { Injectable } from '@nestjs/common'
+import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { v4 as uuidv4 } from 'uuid'
-import { AUTH } from './auth.const'
+import { AUTH, SALT } from './auth.const'
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class AuthService {
@@ -87,13 +88,16 @@ export class AuthService {
 
     const user = await this.prismaService.user.findFirstOrThrow({
       where: {
-        login,
-        password
+        login
       }
     })
 
-    await this.setSession(user.id, ctx)
+    const isMatch = await bcrypt.compare(password, user?.password)
+    if (!isMatch) {
+      throw new UnauthorizedException()
+    }
 
+    await this.setSession(user.id, ctx)
     return user
   }
 
@@ -140,13 +144,15 @@ export class AuthService {
       throw new Error(AUTH.PASSWORD_BE_DIFFERENT)
     }
 
+    const hashedPassword = await this.getHash(password)
+
     await Promise.all([
       this.prismaService.user.update({
         where: {
           id: user.id,
         },
         data: {
-          password
+          password: hashedPassword
         }
       }),
       this.prismaService.authRecovery.delete({
@@ -163,15 +169,20 @@ export class AuthService {
       throw new Error(AUTH.PASSWORD_MISMATCH)
     }
 
+    const hashedPassword = await this.getHash(password)
     const user = await this.prismaService.user.create({
       data: {
         email,
-        password,
+        password: hashedPassword,
         login: email
       }
     })
     await this.setSession(user.id, ctx)
 
     return user
+  }
+
+  async getHash(text: string) {
+    return await bcrypt.hash(text, SALT)
   }
 }

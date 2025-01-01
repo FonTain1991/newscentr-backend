@@ -16,7 +16,7 @@ export class UserResolver {
     return new Date
   }
 
-  // @Directive(GQLDirectives.isAuth)
+  @Directive(GQLDirectives.isAuth)
   @Query(() => User, { nullable: true })
   async me(@Context() ctx: GQLContext) {
     return ctx.user
